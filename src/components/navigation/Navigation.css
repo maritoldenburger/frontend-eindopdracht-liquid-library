@@ -1,0 +1,50 @@
+nav {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    background: var(--gradient);
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 80px;
+    margin-right: 50px;
+    font-size: 18px;
+}
+
+nav ul a,
+nav ul a:visited {
+    color: var(--white-text);
+    text-decoration: none;
+}
+
+.logo {
+    height: 80px;
+    margin-left: 50px;
+    align-self: center;
+}
+
+.icon {
+    height: 15px;
+    color: var(--white-text);
+    margin-right: 3px;
+}
+
+.default-menu-link {
+    color: var(--white-text);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.active-menu-link {
+    color: var(--white-text);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 2px;
+}

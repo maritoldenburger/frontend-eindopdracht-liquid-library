@@ -1,10 +1,11 @@
 import React from "react";
 
-function Header() {
+function SignUp() {
     return (
         <>
+            <h1>SIGN UP</h1>
         </>
     );
 }
 
-export default Header;
+export default SignUp;
