@@ -72,7 +72,7 @@ h4 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /*border: 2px dotted dodgerblue;*/
+    border: 2px dotted dodgerblue;
 }
 
 .inner-container {
@@ -82,7 +82,7 @@ h4 {
     align-items: center;
     padding: 20px;
     text-align: center;
-    /*border: 2px dotted blueviolet;*/
+    border: 2px dotted blueviolet;
 }
 
 .small-inner-container {
@@ -92,6 +92,22 @@ h4 {
 }
 
 /* --------------- 3.2 Other --------------------------- */
+
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+            radial-gradient(farthest-side,var(--primary-colour) 94%,#0000) top/8px 8px no-repeat,
+            conic-gradient(#0000 30%,var(--primary-colour));
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation: l13 1s infinite linear;
+    align-items: center;
+}
+@keyframes l13{
+    100%{transform: rotate(1turn)}
+}
+
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
