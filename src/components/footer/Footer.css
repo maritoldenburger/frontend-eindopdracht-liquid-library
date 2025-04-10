@@ -1,0 +1,23 @@
+footer {
+    height: 50px;
+    background: var(--gradient);
+    color: var(--white-text);
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.footer-content-wrapper {
+    width: 100%;
+    max-width: 1200px; /* Maximaliseer de breedte tot 1200px */
+    display: flex;
+    justify-content: space-between; /* Zorg ervoor dat de inhoud van de footer gespreid wordt */
+    align-items: center; /* Verticaal centreren van de items */
+}
+
+.footer-icons-wrapper {
+    display: flex;
+    gap: 7px;
+}

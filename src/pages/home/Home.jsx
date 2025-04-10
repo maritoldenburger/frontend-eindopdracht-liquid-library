@@ -6,6 +6,7 @@ import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import CocktailCard from "../../components/cocktailCard/CocktailCard.jsx";
 import axios from "axios";
+import Footer from "../../components/footer/Footer.jsx";
 
 function Home() {
     const [cocktails, setCocktails] = useState([]);
@@ -39,10 +40,6 @@ function Home() {
         fetchCocktails();
     }, []);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     return (
         <>
             <header>
@@ -67,6 +64,7 @@ function Home() {
 
                 </section>
             </main>
+            <Footer/>
         </>
     );
 }

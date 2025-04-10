@@ -8,6 +8,7 @@
 .header-container h1 {
     color: var(--white-text);
     text-transform: initial;
+    padding: 20px 0 25px 0;
 }
 
 .header-container a, a:visited {
