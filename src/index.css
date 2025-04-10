@@ -1,46 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  --main-background: #FFFFFF;
-  --main-text: #303030;
-  --white-text: #FFFFFF;
-  --field-text: #949494;
-  --primary-colour: #FE6D46;
-  --secondary-colour: #FABC2B;
-  --gradient: linear-gradient(90deg, hsla(359, 100%, 65%, 1), hsla(50, 95%, 56%, 1));
+    --main-background: #FFFFFF;
+    --main-text: #303030;
+    --white-text: #FFFFFF;
+    --field-text: #949494;
+    --primary-colour: #FE6D46;
+    --secondary-colour: #FABC2B;
+    --gradient: linear-gradient(90deg, hsla(359, 100%, 65%, 1), hsla(50, 95%, 56%, 1));
 }
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  font-family: 'Poppins', Arial, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  color: var(--main-text);
-  background-color: var(--main-background);
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--main-text);
+    background-color: var(--main-background);
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* ------------------------------- 2. Typography ----------------------------------- */
+
+h1, h2 {
+    font-size: 2rem;
+    padding: 12px 0;
+    color: var(--main-text);
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
 
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
 
+/*.container {*/
+/*    max-width: 1200px;*/
+/*    padding: 20px;*/
+/*    margin: 0 auto;*/
+/*    border: 2px dotted green;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
 .outer-container {
-  padding: 0 20px;
-  border: 2px dotted red;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px dotted dodgerblue;
 }
 
-.container {
-  max-width: 1200px; /* Maximale breedte voor grotere schermen */
-  padding: 20px; /* Padding aan de binnenkant van de container */
-  margin: 0 auto; /* Centreer de content */
+.inner-container {
+    flex-basis: 1200px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    align-items: center;
+    padding: 20px;
+    border: 2px dotted blueviolet;
+}
+
+.small-inner-container {
+    flex-basis: 1000px;
+    flex-shrink: 1;
+    flex-grow: 0;
 }
 
 /* --------------- 3.2 Other --------------------------- */

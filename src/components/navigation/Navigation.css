@@ -1,35 +1,41 @@
+header {
+    background: var(--gradient);
+}
+
 nav {
     position: relative;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
-    background: var(--gradient);
 }
 
 ul {
     display: flex;
     flex-direction: row;
     list-style: none;
-    gap: 80px;
-    margin-right: 50px;
-    font-size: 18px;
+    gap: 60px;
+    margin-right: 20px;
+    font-size: 16px;
 }
 
 nav ul a,
 nav ul a:visited {
     color: var(--white-text);
     text-decoration: none;
+    cursor: pointer;
 }
 
 .logo {
-    height: 80px;
-    margin-left: 50px;
+    height: 60px;
+    margin-left: 15px;
     align-self: center;
+    vertical-align: middle;
 }
 
-.icon {
+.nav-icon {
     height: 15px;
     color: var(--white-text);
     margin-right: 3px;
@@ -38,13 +44,14 @@ nav ul a:visited {
 .default-menu-link {
     color: var(--white-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .active-menu-link {
     color: var(--white-text);
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: underline;
     text-underline-offset: 2px;
     text-decoration-thickness: 2px;
 }
+
