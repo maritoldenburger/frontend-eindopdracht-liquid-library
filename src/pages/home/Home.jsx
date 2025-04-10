@@ -10,7 +10,7 @@ import Footer from "../../components/footer/Footer.jsx";
 
 function Home() {
     const [cocktails, setCocktails] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchCocktails = async () => {
