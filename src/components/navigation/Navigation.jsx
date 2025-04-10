@@ -9,41 +9,43 @@ import {faMartiniGlass} from "@fortawesome/free-solid-svg-icons";
 
 function Navigation() {
     return (
-        <nav>
+        <header className="outer-container">
+            <nav className="inner-container">
                 <NavLink to="/"><img src={logo} className="logo" alt="Logo"/></NavLink>
                 <ul>
                     <li>
                         <NavLink
-                            className={({ isActive }) => isActive ? "active-menu-link" : "default-menu-link"}
+                            className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
                             to="/">
-                            <FontAwesomeIcon icon={faCircleQuestion} className="icon"/>
+                            <FontAwesomeIcon icon={faCircleQuestion} className="nav-icon"/>
                             Surprise me!
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
-                            className={({ isActive }) => isActive ? "active-menu-link" : "default-menu-link"}
+                            className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
                             to="/cocktails">
-                            <FontAwesomeIcon icon={faMartiniGlass} className="icon"/>
+                            <FontAwesomeIcon icon={faMartiniGlass} className="nav-icon"/>
                             Cocktails
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
-                            className={({ isActive }) => isActive ? "active-menu-link" : "default-menu-link"}
+                            className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
                             to="/favourites">
-                            <FontAwesomeIcon icon={faHeartRegular} className="icon"/>
+                            <FontAwesomeIcon icon={faHeartRegular} className="nav-icon"/>
                             Favourites
                         </NavLink>
                     </li>
                     <li>
                         <NavLink
-                            className={({ isActive }) => isActive ? "active-menu-link" : "default-menu-link"}
+                            className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
                             to="/login">
-                            <FontAwesomeIcon icon={faUser} className="icon"/>Sign In</NavLink>
+                            <FontAwesomeIcon icon={faUser} className="nav-icon"/>Sign In</NavLink>
                     </li>
                 </ul>
-        </nav>
+            </nav>
+        </header>
     );
 }
 
