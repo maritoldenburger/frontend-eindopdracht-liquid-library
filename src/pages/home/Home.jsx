@@ -9,7 +9,7 @@ import axios from "axios";
 
 function Home() {
     const [cocktails, setCocktails] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchCocktails = async () => {
@@ -38,10 +38,6 @@ function Home() {
 
         fetchCocktails();
     }, []);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <>

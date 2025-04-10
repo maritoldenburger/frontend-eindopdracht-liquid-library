@@ -1,7 +1,11 @@
 .searchbar {
     border-radius: 25px;
-    padding: 20px 280px;
+    padding: 20px 460px 20px 50px;
     outline: var(--gradient);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 .searchbar-default {
@@ -9,7 +13,30 @@
 }
 
 .searchbar-homepage {
-    margin: 0;
     background-color: #F0F0F0;
-    border: white 15px solid;
+    border: white 12px solid;
 }
+
+.searchbar-form {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+}
+
+.searchbar-icon-wrapper {
+    position: absolute;
+    left: 250px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    z-index: 1;
+}
+
+.searchbar-icon {
+    color: var(--field-text);
+    display: inline-block;
+    height: 16px;
+
+}
+
