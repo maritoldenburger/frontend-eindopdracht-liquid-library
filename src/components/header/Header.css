@@ -1,15 +1,11 @@
 .header-container {
     background: var(--gradient);
-    height: 420px;
-}
-
-.header-container .container {
-    display: flex;
-    flex-direction: column;
+    height: 320px;
 }
 
 .header-container h1 {
     color: var(--white-text);
+    text-transform: initial;
 }
 
 .header-container a, a:visited {

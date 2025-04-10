@@ -10,6 +10,7 @@ button {
     color: var(--white-text);
     display: flex;
     gap: 4px;
+    margin: 10px;
 }
 
 button:active {

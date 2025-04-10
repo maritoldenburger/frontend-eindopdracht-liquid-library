@@ -37,6 +37,11 @@ h1, h2 {
     font-size: 2rem;
     padding: 12px 0;
     color: var(--main-text);
+    text-transform: uppercase;
+}
+
+h2 {
+    font-weight: 600;
 }
 
 h3 {
@@ -76,6 +81,7 @@ h4 {
     flex-grow: 0;
     align-items: center;
     padding: 20px;
+    text-align: center;
     border: 2px dotted blueviolet;
 }
 
