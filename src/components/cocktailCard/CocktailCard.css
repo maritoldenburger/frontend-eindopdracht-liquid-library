@@ -1,0 +1,23 @@
+.cocktail-card {
+    border-radius: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.cocktail-card:hover {
+    transform: scale(0.95);
+}
+
+.cocktail-card-image {
+    height: 250px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.cocktail-card-title {
+    color: var(--primary-colour);
+    text-transform: uppercase;
+}
