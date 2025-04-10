@@ -72,7 +72,7 @@ h4 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 2px dotted dodgerblue;
+    /*border: 2px dotted dodgerblue;*/
 }
 
 .inner-container {
@@ -82,7 +82,7 @@ h4 {
     align-items: center;
     padding: 20px;
     text-align: center;
-    border: 2px dotted blueviolet;
+    /*border: 2px dotted blueviolet;*/
 }
 
 .small-inner-container {

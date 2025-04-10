@@ -1,6 +1,8 @@
 .header-container {
     background: var(--gradient);
-    height: 320px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
 }
 
 .header-container h1 {
@@ -25,4 +27,8 @@
 
 .header-container a:hover::after, a:visited:hover::after {
     width: 100%;
+}
+
+.searchbar-container {
+
 }

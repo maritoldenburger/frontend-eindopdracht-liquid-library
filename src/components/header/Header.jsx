@@ -10,8 +10,10 @@ function Header() {
         <header className="outer-container header-container">
             <section className="inner-container">
                 <h1><NavLink to="/signup">Sign up</NavLink> and find your new favourite drink!</h1>
-                <SearchBar className="searchbar-default">
+                <div className="inner container searchbar-container">
+                    <SearchBar variant="searchbar-homepage">
                 </SearchBar>
+                </div>
             </section>
         </header>
     );

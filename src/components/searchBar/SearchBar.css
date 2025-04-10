@@ -1,7 +1,15 @@
+.searchbar {
+    border-radius: 25px;
+    padding: 20px 280px;
+    outline: var(--gradient);
+}
+
 .searchbar-default {
-    border-radius: 20px;
+
 }
 
 .searchbar-homepage {
-
+    margin: 0;
+    background-color: #F0F0F0;
+    border: white 15px solid;
 }
