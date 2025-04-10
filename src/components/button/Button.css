@@ -1,0 +1,23 @@
+button {
+    padding: 15px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    background: var(--gradient);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white-text);
+    display: flex;
+    gap: 4px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.button-icon {
+    height: 18px;
+    color: var(--white-text);
+    margin-right: 3px;
+}

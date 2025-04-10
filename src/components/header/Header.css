@@ -1,0 +1,32 @@
+.header-container {
+    background: var(--gradient);
+    height: 420px;
+}
+
+.header-container .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container h1 {
+    color: var(--white-text);
+}
+
+.header-container a, a:visited {
+    position: relative;
+}
+
+.header-container a::after, a:visited::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    height: 3px;
+    width: 0;
+    background-color: white;
+    transition: width 0.3s ease-out;
+}
+
+.header-container a:hover::after, a:visited:hover::after {
+    width: 100%;
+}

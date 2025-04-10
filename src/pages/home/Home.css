@@ -1,0 +1,15 @@
+.homepage-title {
+    margin: 30px;
+}
+
+.classic-cocktail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.homepage-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
