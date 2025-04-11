@@ -11,6 +11,7 @@ import Footer from "../../components/footer/Footer.jsx";
 function Home() {
     const [cocktails, setCocktails] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const fetchCocktails = async () => {
@@ -31,6 +32,7 @@ function Home() {
 
                 setCocktails(fetchedCocktails);
             } catch (error) {
+                setError(error.message);
                 console.error("Something went wrong:", error);
             } finally {
                 setLoading(false);
@@ -51,7 +53,6 @@ function Home() {
                 <section className="inner-container">
                     <h2 className="homepage-title">In the spotlight: the classics</h2>
                     <div className="classic-cocktail-container">
-
                         {cocktails.map((cocktail) => (
                             <CocktailCard key={cocktail.idDrink} cocktail={cocktail}/>
                         ))}
@@ -61,7 +62,6 @@ function Home() {
                             Browse more classics <FontAwesomeIcon icon={faChevronRight} className="button-icon"/>
                         </Button>
                     </div>
-
                 </section>
             </main>
             <Footer/>

@@ -5,6 +5,7 @@ import Footer from "../../components/footer/Footer.jsx";
 import SearchBar from "../../components/searchBar/SearchBar.jsx";
 import Button from "../../components/button/Button.jsx";
 import axios from "axios";
+import Filters from "../../components/filters/Filters.jsx";
 
 function Cocktails() {
     const [cocktails, setCocktails] = useState([]);
@@ -18,6 +19,14 @@ function Cocktails() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const [categoryFilter, setCategoryFilter] = useState("");
+    const [alcoholFilter, setAlcoholFilter] = useState("");
+    const [ingredientFilter, setIngredientFilter] = useState("");
+    const [glassFilter, setGlassFilter] = useState("");
+
+    const [categories, setCategories] = useState([]);
+    const [glasses, setGlasses] = useState([]);
+
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -29,9 +38,20 @@ function Cocktails() {
                 setCocktails(response.data.drinks);
                 setVisibleCocktails(response.data.drinks.slice(0, 12));
                 setCanLoadMore(response.data.drinks.length > 12);
-            } catch (err) {
-                setError(err.message);
-                console.error(err);
+
+                const categoryResponse = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list");
+                if (categoryResponse.data.drinks) {
+                    setCategories(categoryResponse.data.drinks.map((c) => c.strCategory));
+                }
+
+                const glassResponse = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list");
+                if (glassResponse.data.drinks) {
+                    setGlasses(glassResponse.data.drinks.map((g) => g.strGlass));
+                }
+
+            } catch (error) {
+                setError(error.message);
+                console.error(error);
             } finally {
                 setLoading(false);
             }
@@ -39,6 +59,44 @@ function Cocktails() {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const fetchFiltered = async () => {
+            if (!categoryFilter && !alcoholFilter && !ingredientFilter && !glassFilter) {
+                setVisibleCocktails(cocktails.slice(0, 12));
+                setCanLoadMore(cocktails.length > 12);
+                return;
+            }
+
+            setLoading(true);
+            setError(null);
+
+            try {
+                let url = "";
+
+                if (categoryFilter) url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${categoryFilter}`;
+                else if (glassFilter) url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glassFilter}`;
+                else if (alcoholFilter) url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${alcoholFilter}`;
+                else if (ingredientFilter) url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredientFilter}`;
+
+                const response = await axios.get(url);
+                if (response.data.drinks) {
+                    setVisibleCocktails(response.data.drinks.slice(0, 12));
+                    setCanLoadMore(response.data.drinks.length > 12);
+                } else {
+                    setVisibleCocktails([]);
+                    setCanLoadMore(false);
+                }
+            } catch (error) {
+                setError(error.message);
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFiltered();
+    }, [categoryFilter, alcoholFilter, ingredientFilter, glassFilter, cocktails]);
 
     const handleSearch = async (e) => {
 
@@ -68,9 +126,9 @@ function Cocktails() {
             setMatchingCocktails(filtered);
             setVisibleCocktails(filtered.slice(0, 12));
             setCanLoadMore(filtered.length > 12);
-        } catch (err) {
-            setError(err.message);
-            console.error(err);
+        } catch (error) {
+            setError(error.message);
+            console.error(error);
         } finally {
             setLoading(false);
         }
@@ -102,36 +160,50 @@ function Cocktails() {
 
     return (
         <>
-            <div className="outer-container">
-                <main className="inner-container">
-                    <div className="cocktails-content-wrapper">
-                        <SearchBar
-                        placeholder="Search for a specific drink or ingredient..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        onSubmit={handleSearch}
-                        handleReset={resetSearch}
-                        variant="searchbar-default"
-                    />
-
-                        {loading && <p>Shaking... 🍸</p>}
-                        {error && <p>{error}</p>}
-
-                        {!loading && visibleCocktails.length === 0 && foundMatches !== "" && (
-                            <p>We couldn't find any matching cocktails. Please try again with a different search
-                                term.</p>
-                        )}
-
+            <div className="outer-container cocktails">
+                <main className="inner-container cocktails">
+                    <aside className="cocktail-filters-wrapper">
+                        <Filters
+                            categories={categories}
+                            glasses={glasses}
+                            categoryFilter={categoryFilter}
+                            alcoholFilter={alcoholFilter}
+                            ingredientFilter={ingredientFilter}
+                            glassFilter={glassFilter}
+                            setCategoryFilter={setCategoryFilter}
+                            setAlcoholFilter={setAlcoholFilter}
+                            setIngredientFilter={setIngredientFilter}
+                            setGlassFilter={setGlassFilter}
+                        />
+                    </aside>
+                    <section className="cocktail-content-section">
+                        <div className="cocktail-searchbar-container">
+                            <SearchBar
+                                placeholder="Search for a specific drink or ingredient..."
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                onSubmit={handleSearch}
+                                handleReset={resetSearch}
+                                variant="searchbar-default"
+                            />
+                        </div>
                         <div className="cocktail-grid">
+                            {loading && <p className="loading-message">Shaking... 🍸</p>}
+                            {error && <p className="error-message">{error}</p>}
+                            {!loading && visibleCocktails.length === 0 && foundMatches !== "" && (
+                                <p className="error-message">No matches found. Try a different search term.</p>
+                            )}
                             {visibleCocktails.map((cocktail) => (
                                 <CocktailCard key={cocktail.idDrink} cocktail={cocktail}/>
                             ))}
+                        </div>
 
+                        <div className="load-more-cocktails-button">
                             {!loading && canLoadMore && (
                                 <Button onClick={loadMoreCocktails}>Load more cocktails</Button>
                             )}
                         </div>
-                    </div>
+                    </section>
                 </main>
             </div>
             <Footer/>
