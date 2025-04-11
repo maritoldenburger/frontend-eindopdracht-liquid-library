@@ -2,22 +2,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .searchbar-wrapper {
     position: relative;
     width: 600px;
+    max-width: 100%;
 }
 
 .searchbar {
     width: 100%;
     padding: 15px 15px 15px 50px;
     border: none;
+    outline: none;
     border-radius: 25px;
-    background-color: #F0F0F0;
     font-size: 16px;
     color: var(--main-text);
-    outline: none;
+    z-index: 1;
 }
 
 .searchbar::placeholder {
@@ -25,10 +28,22 @@
 }
 
 .searchbar-default {
+    border: 2px solid #E5E5E5;
+    border-radius: 25px;
+    z-index: 1;
+}
 
+.searchbar-default:focus {
+    outline: none;
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white),
+    var(--gradient);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
 }
 
 .searchbar-homepage {
+    background-color: #F0F0F0;
     border: 10px solid var(--white-text);
     border-radius: 25px;
 }
@@ -41,4 +56,24 @@
     font-size: 20px;
     color: #aaa;
     pointer-events: none;
+}
+
+.searchbar-reset-button {
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.searchbar-reset-button:active {
+    transform: translateY(-50%);
+}
+
+.searchbar-reset-button .fa-circle-xmark {
+    color: var(--primary-colour);
 }
