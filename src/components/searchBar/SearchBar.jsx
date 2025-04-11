@@ -1,9 +1,9 @@
 import React from "react";
 import "./SearchBar.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {faMagnifyingGlass, faCircleXmark} from "@fortawesome/free-solid-svg-icons";
 
-function SearchBar({placeholder, value, onChange, onSubmit, variant}) {
+function SearchBar({placeholder, value, onChange, onSubmit, variant, handleReset}) {
     return (
 
         <div className="searchbar-container">
@@ -14,10 +14,19 @@ function SearchBar({placeholder, value, onChange, onSubmit, variant}) {
                         type="text"
                         name="searchbar"
                         placeholder={placeholder}
-                        value={value} // zet je op query
-                        onChange={onChange} // zet je op {(e) => setQuery(e.target.value)}
+                        value={value}
+                        onChange={onChange}
                         className={`searchbar ${variant}`}
                     />
+                    {value && (
+                        <button
+                            type="button"
+                            className="searchbar-reset-button"
+                            onClick={handleReset}
+                        >
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
                 </form>
             </div>
         </div>

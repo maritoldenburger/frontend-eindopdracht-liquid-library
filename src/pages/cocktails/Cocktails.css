@@ -1,0 +1,15 @@
+.cocktails-content-wrapper {
+    margin: 20px;
+}
+
+.cocktail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 40px;
+    margin: 40px 20px;
+}
+
+.cocktail-grid h3 {
+    font-size: 1.2rem;
+}
