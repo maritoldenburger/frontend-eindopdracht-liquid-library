@@ -1,0 +1,94 @@
+.cocktail-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.image-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.cocktail-image {
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    margin-left: 50px;
+}
+
+.cocktail-stats {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    margin: 100px 50px 0 0;
+    border: 2px dotted orange;
+}
+
+.drink-title {
+    color: var(--primary-colour);
+}
+
+.rating {
+    font-size: 1.5rem;
+    color: #ffaa00;
+}
+
+.favourites-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ingredients-instructions-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: left;
+    gap: 50px;
+    border: 2px dotted hotpink;
+}
+
+.ingredients {
+    flex: 1;
+    max-width: 300px;
+    font-size: 16px;
+}
+
+.instructions {
+    flex: 1;
+    max-width: 450px;
+    font-size: 16px;
+}
+
+.ingredients-instructions-content h2 {
+    color: var(--primary-colour);
+}
+
+.ingredients ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.ingredients li {
+    padding: 8px 0;
+    border-bottom: 1px solid #E5E5E5;
+    width: 100%;
+}
+
+.instructions p {
+    padding: 8px 0;
+    border-bottom: 1px solid #E5E5E5;
+}

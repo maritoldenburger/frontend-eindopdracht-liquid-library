@@ -29,9 +29,8 @@ function Cocktails() {
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
-            setError(null);
 
+            setLoading(true);
             try {
                 const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail");
 
