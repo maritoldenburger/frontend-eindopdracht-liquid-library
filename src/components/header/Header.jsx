@@ -94,7 +94,7 @@ function Header() {
                         onSubmit={handleSearch}
                         handleReset={handleReset}
                     />
-                    {loading && <p className="loading-message">Shaking... 🍸</p>}
+                    {loading && <p className="loading-message">Mixing... 🍹</p>}
                     {error && <p className="error-message">{error}</p>}
                     {query && !loading && searchSuggestions.length > 0 && (
                         <ul className="suggestions-list">

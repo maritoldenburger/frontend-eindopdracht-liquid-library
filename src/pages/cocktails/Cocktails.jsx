@@ -188,7 +188,7 @@ function Cocktails() {
                             />
                         </div>
                         <div className="cocktail-grid">
-                            {loading && <p className="loading-message">Shaking... 🍸</p>}
+                            {loading && <p className="loading-message">Mixing... 🍹</p>}
                             {error && <p className="error-message">{error}</p>}
                             {!loading && visibleCocktails.length === 0 && foundMatches !== "" && (
                                 <p className="error-message">No matches found. Please try a different search term.</p>

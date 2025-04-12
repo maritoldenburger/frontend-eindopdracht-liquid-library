@@ -16,7 +16,7 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                            to="/">
+                            to="/surprise">
                             <FontAwesomeIcon icon={faCircleQuestion} className="nav-icon"/>
                             Surprise me!
                         </NavLink>
