@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import "./Header.css";
 import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
-import Button from "../button/Button.jsx";
 import SearchBar from "../searchBar/SearchBar.jsx";
 import {getSearchSuggestions} from "../../helpers/getSearchSuggestions.js";
 
@@ -19,7 +18,6 @@ function Header() {
         setLoading(true);
         try {
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`);
-            console.log("Fetched cocktails:", response.data.drinks);
             if (response.data.drinks) {
                 setCocktails(response.data.drinks);
             } else {
@@ -27,7 +25,7 @@ function Header() {
             }
         } catch (error) {
             setError(error.message);
-            console.error("Error fetching cocktails:", error);
+            console.error(error);
         } finally {
             setLoading(false);
         }
@@ -45,7 +43,6 @@ function Header() {
         if (query) {
             const filteredSuggestions = getSearchSuggestions(query, cocktails);
             setSearchSuggestions(filteredSuggestions);
-            console.log("Filtered suggestions:", filteredSuggestions);
         } else {
             setSearchSuggestions([]);
         }
@@ -55,8 +52,33 @@ function Header() {
         setQuery(e.target.value);
     };
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setError(null);
+
+        const foundCocktail = cocktails.find(
+            (cocktail) =>
+                cocktail.strDrink.toLowerCase() === query.toLowerCase()
+        );
+
+        if (foundCocktail) {
+            navigate(`/cocktail/${foundCocktail.idDrink}`);
+        } else if (!query) {
+            setError("Please enter a drink name.");
+        } else {
+            setError("We couldn't find a drink with that name. Please try a different search term.");
+        }
+    };
+
     const handleChosenSuggestion = (cocktail) => {
         navigate(`/cocktail/${cocktail.idDrink}`);
+    };
+
+    const handleReset = () => {
+        setQuery("");
+        setError(null);
+        setCocktails([]);
+        setSearchSuggestions([]);
     };
 
     return (
@@ -69,11 +91,15 @@ function Header() {
                         placeholder="Start searching..."
                         value={query}
                         onChange={handleChange}
+                        onSubmit={handleSearch}
+                        handleReset={handleReset}
                     />
+                    {loading && <p className="loading-message">Shaking... 🍸</p>}
+                    {error && <p className="error-message">{error}</p>}
                     {query && !loading && searchSuggestions.length > 0 && (
                         <ul className="suggestions-list">
                             {searchSuggestions.map((cocktail) => (
-                                <li
+                                <li className="suggestion-item"
                                     key={cocktail.idDrink}
                                     onClick={() => handleChosenSuggestion(cocktail)}
                                 >
@@ -82,7 +108,6 @@ function Header() {
                             ))}
                         </ul>
                     )}
-                    {loading && <p className="loading-message">Shaking... 🍸</p>}
                 </div>
             </section>
         </header>

@@ -134,7 +134,7 @@ function Cocktails() {
         }
     };
 
-    const resetSearch = () => {
+    const handleReset = () => {
         setQuery("");
         setFoundMatches("");
         setMatchingCocktails([]);
@@ -183,7 +183,7 @@ function Cocktails() {
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 onSubmit={handleSearch}
-                                handleReset={resetSearch}
+                                handleReset={handleReset}
                                 variant="searchbar-default"
                             />
                         </div>

@@ -30,3 +30,33 @@
     width: 100%;
 }
 
+.suggestions-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--white-text);
+    width: 50%;
+    border-radius: 5px;
+    gap: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.suggestion-item {
+    display: flex;
+    padding: 8px ;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.suggestion-item:hover {
+    background-color: #F0F0F0;
+    border-radius: 5px;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
