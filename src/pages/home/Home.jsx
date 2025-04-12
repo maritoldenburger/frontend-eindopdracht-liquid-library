@@ -7,11 +7,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import CocktailCard from "../../components/cocktailCard/CocktailCard.jsx";
 import axios from "axios";
 import Footer from "../../components/footer/Footer.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
     const [cocktails, setCocktails] = useState([]);
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(null)
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCocktails = async () => {
@@ -33,7 +36,7 @@ function Home() {
                 setCocktails(fetchedCocktails);
             } catch (error) {
                 setError(error.message);
-                console.error("Something went wrong:", error);
+                console.error(error.message);
             } finally {
                 setLoading(false);
             }
@@ -58,8 +61,8 @@ function Home() {
                         ))}
                     </div>
                     <div className="homepage-button-wrapper">
-                        <Button>
-                            Browse more classics <FontAwesomeIcon icon={faChevronRight} className="button-icon"/>
+                        <Button onClick={() => navigate("/cocktails")}>
+                            Find more classics <FontAwesomeIcon icon={faChevronRight} className="button-icon"/>
                         </Button>
                     </div>
                 </section>
