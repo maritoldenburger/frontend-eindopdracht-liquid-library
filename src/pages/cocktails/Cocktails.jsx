@@ -191,7 +191,7 @@ function Cocktails() {
                             {loading && <p className="loading-message">Shaking... 🍸</p>}
                             {error && <p className="error-message">{error}</p>}
                             {!loading && visibleCocktails.length === 0 && foundMatches !== "" && (
-                                <p className="error-message">No matches found. Try a different search term.</p>
+                                <p className="error-message">No matches found. Please try a different search term.</p>
                             )}
                             {visibleCocktails.map((cocktail) => (
                                 <CocktailCard key={cocktail.idDrink} cocktail={cocktail}/>
