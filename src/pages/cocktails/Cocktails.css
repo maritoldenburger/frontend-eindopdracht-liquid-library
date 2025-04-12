@@ -40,10 +40,6 @@
     gap: 20px;
 }
 
-.cocktail-grid h3 {
-    font-size: 1.2rem;
-}
-
 .load-more-cocktails-button {
     display: flex;
     justify-content: center;
