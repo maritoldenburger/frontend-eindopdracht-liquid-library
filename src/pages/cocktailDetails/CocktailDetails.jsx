@@ -70,31 +70,32 @@ function CocktailDetails() {
                                     <p className="rating">⭐️⭐️⭐️⭐️☆</p>
                                     <div className="favourites-button">
                                         <Button
-                                        type="button"
-                                        // onClick={onClick}
-                                    >
-                                        Add to favourites
-                                    </Button>
+                                            type="button"
+                                            // onClick={onClick}
+                                        >
+                                            Add to favourites
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
-                            <div className="ingredients-instructions-content">
-                                <div className="ingredients">
-                                    <h2>Ingredients</h2>
-                                    <ul>
-                                        {fetchIngredients().map((item, index) => (
-                                            <li key={index}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className="instructions">
-                                    <h2>Instructions</h2>
-                                    {cocktail.strInstructions
-                                        .split(". ")
-                                        .map((step, index) => (
-                                            <p key={index}>{step.trim()}.</p>
-                                        ))}
+                            <div className="ingredients-instructions-wrapper">
+                                <div className="ingredients-instructions-content">
+                                    <div className="ingredients">
+                                        <h2>Ingredients</h2>
+                                        <ul>
+                                            {fetchIngredients().map((item, index) => (
+                                                <li key={index}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="instructions">
+                                        <h2>Instructions</h2>
+                                        {cocktail.strInstructions
+                                            .split(". ")
+                                            .map((step, index) => (
+                                                <p key={index}>{step.trim()}.</p>
+                                            ))}
+                                    </div>
                                 </div>
                             </div>
                         </section>

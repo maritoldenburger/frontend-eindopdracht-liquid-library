@@ -8,10 +8,8 @@
 
 .image-title-wrapper {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 60px;
-    flex-wrap: wrap;
+    gap: 80px;
+    align-items: start;
 }
 
 .cocktail-image {
@@ -28,7 +26,6 @@
     gap: 20px;
     flex: 1;
     margin: 100px 50px 0 0;
-    border: 2px dotted orange;
 }
 
 .drink-title {
@@ -47,30 +44,34 @@
     align-items: center;
 }
 
+.ingredients-instructions-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .ingredients-instructions-content {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: left;
-    gap: 50px;
-    border: 2px dotted hotpink;
-}
-
-.ingredients {
-    flex: 1;
-    max-width: 300px;
-    font-size: 16px;
-}
-
-.instructions {
-    flex: 1;
-    max-width: 450px;
-    font-size: 16px;
+    gap: 30px;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
 }
 
 .ingredients-instructions-content h2 {
     color: var(--primary-colour);
+}
+
+.ingredients {
+    flex: 1;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions {
+    flex: 1;
+    max-width: 50%;
+    font-size: 16px;
 }
 
 .ingredients ul {
@@ -86,9 +87,11 @@
     padding: 8px 0;
     border-bottom: 1px solid #E5E5E5;
     width: 100%;
+    text-align: left;
 }
 
 .instructions p {
     padding: 8px 0;
     border-bottom: 1px solid #E5E5E5;
+    text-align: left;
 }
