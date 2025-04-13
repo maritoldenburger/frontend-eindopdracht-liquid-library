@@ -60,17 +60,6 @@ h4 {
 
 /* --------------- 3.1 Reusables ----------------------- */
 
-/*.container {*/
-/*    max-width: 1200px;*/
-/*    padding: 20px;*/
-/*    margin: 0 auto;*/
-/*    border: 2px dotted green;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    align-content: center;*/
-/*    align-items: center;*/
-/*}*/
-
 .outer-container {
     width: 100%;
     display: flex;

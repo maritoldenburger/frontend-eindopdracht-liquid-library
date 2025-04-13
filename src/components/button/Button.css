@@ -9,6 +9,7 @@ button {
     font-size: 1rem;
     color: var(--white-text);
     width: fit-content;
+    font-family: inherit;
 }
 
 button:active {
