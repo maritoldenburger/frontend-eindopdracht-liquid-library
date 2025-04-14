@@ -1,0 +1,173 @@
+.small-inner-container.cocktaildetails {
+    min-height: calc(100vh - 70px);
+}
+
+.cocktail-details {
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.image-title-wrapper {
+    display: flex;
+    gap: 80px;
+    align-items: start;
+}
+
+.cocktail-image {
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    margin-left: 50px;
+}
+
+.cocktail-stats {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 100px 50px 0 0;
+}
+
+.drink-title {
+    color: var(--primary-colour);
+}
+
+.average-rating,
+.favourites-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingredients-instructions-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ingredients-instructions-content {
+    display: flex;
+    gap: 30px;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.ingredients-instructions-content h2 {
+    color: var(--primary-colour);
+}
+
+.ingredients {
+    flex: 1;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.instructions {
+    flex: 1;
+    max-width: 50%;
+    font-size: 16px;
+}
+
+.ingredients ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.ingredients li {
+    padding: 8px 0;
+    border-bottom: 1px solid #E5E5E5;
+    width: 100%;
+    text-align: left;
+}
+
+.instructions p {
+    padding: 8px 0;
+    border-bottom: 1px solid #E5E5E5;
+    text-align: left;
+}
+
+.comments-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    margin: 75px 0 50px 0;
+}
+
+.comments-wrapper h3 {
+    margin-bottom: 10px;
+}
+
+.comments-form-container {
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+}
+
+.comments-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-weight: 500;
+}
+
+.comments-form-container input,
+.comments-form-container textarea {
+    display: flex;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    font-size: inherit;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.comments-form-container button {
+    padding: 5px 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 auto 20px auto;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.review-text {
+    color: var(--main-text);
+    margin-left: 20px;
+    margin-bottom: 10px;
+}

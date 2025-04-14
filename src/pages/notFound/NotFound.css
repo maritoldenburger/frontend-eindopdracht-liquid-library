@@ -1,0 +1,36 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: calc(100vh - 70px);
+}
+
+.not-found-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-colour);
+    position: relative;
+}
+
+.not-found-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: 0;
+    background-color: var(--primary-colour);
+    transition: width 0.3s ease-out;
+}
+
+.not-found-link:hover::after {
+    width: 100%;
+}
+
+
+.not-found-container h3 {
+    font-weight: 600;
+    margin: 10px;
+}

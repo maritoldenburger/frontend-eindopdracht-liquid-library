@@ -8,7 +8,7 @@ import CocktailDetails from "./pages/cocktailDetails/CocktailDetails.jsx";
 import Favourites from "./pages/favourites/Favourites.jsx";
 import Login from "./pages/login/login.jsx";
 import SignUp from "./pages/signUp/SignUp.jsx";
-import SurpriseMeRedirect from "./components/SurpriseMeRedirect/SurpriseMeRedirect.jsx";
+import SurpriseMeRedirect from "./components/surpriseMeRedirect/SurpriseMeRedirect.jsx";
 
 function App() {
     return (

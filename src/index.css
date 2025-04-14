@@ -60,23 +60,12 @@ h4 {
 
 /* --------------- 3.1 Reusables ----------------------- */
 
-/*.container {*/
-/*    max-width: 1200px;*/
-/*    padding: 20px;*/
-/*    margin: 0 auto;*/
-/*    border: 2px dotted green;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    align-content: center;*/
-/*    align-items: center;*/
-/*}*/
-
 .outer-container {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 2px dotted dodgerblue;
+    /*border: 2px dotted dodgerblue;*/
 }
 
 .inner-container {
@@ -86,13 +75,14 @@ h4 {
     align-items: center;
     padding: 20px;
     text-align: center;
-    border: 2px dotted blueviolet;
+    /*border: 2px dotted blueviolet;*/
 }
 
 .small-inner-container {
     flex-basis: 1000px;
     flex-shrink: 1;
     flex-grow: 0;
+    /*border: 2px dotted limegreen;*/
 }
 
 /* --------------- 3.2 Other --------------------------- */

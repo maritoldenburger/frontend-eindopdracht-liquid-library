@@ -1,0 +1,11 @@
+.input-field {
+    width: 100%;
+}
+
+.input-field-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
