@@ -1,7 +1,11 @@
+.small-inner-container.cocktaildetails {
+    min-height: calc(100vh - 70px);
+}
+
 .cocktail-details {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 75px;
     width: 100%;
     margin: 50px 0;
 }
@@ -23,7 +27,6 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     flex: 1;
     margin: 100px 50px 0 0;
 }
@@ -32,16 +35,13 @@
     color: var(--primary-colour);
 }
 
-.rating {
-    font-size: 1.5rem;
-    color: #ffaa00;
-}
-
+.average-rating,
 .favourites-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .ingredients-instructions-wrapper {
@@ -55,7 +55,6 @@
     text-align: center;
     max-width: 900px;
     width: 100%;
-    margin-top: 30px;
 }
 
 .ingredients-instructions-content h2 {
@@ -102,7 +101,7 @@
     flex-direction: column;
     gap: 40px;
     width: 100%;
-    margin-top: 50px;
+    margin: 75px 0 50px 0;
 }
 
 .comments-wrapper h3 {
@@ -147,7 +146,6 @@
 .reviews-container {
     display: flex;
     flex-direction: column;
-    /*border: 2px dashed darkorange;*/
 }
 
 .review-container {

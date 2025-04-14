@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./CocktailDetails.css";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/button/Button.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import InputField from "../../components/inputField/InputField.jsx";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
+import StarRating from "../../components/starRating/StarRating.jsx";
 
 function CocktailDetails() {
     const [cocktail, setCocktail] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [rating, setRating] = useState(0);
 
-    const { id } = useParams();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {id} = useParams();
+    const {register, handleSubmit, reset, formState: {errors}} = useForm();
 
     useEffect(() => {
         const fetchCocktail = async () => {
             setLoading(true);
             try {
-                const response = await axios.get(
-                    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
-                );
+                const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
                 if (response.data.drinks && response.data.drinks.length > 0) {
                     setCocktail(response.data.drinks[0]);
                 } else {
@@ -50,15 +51,38 @@ function CocktailDetails() {
         return ingredients;
     };
 
+    useEffect(() => {
+        const storedComments = localStorage.getItem(`comments-${id}`);
+        if (storedComments) {
+            setComments(JSON.parse(storedComments));
+        }
+    }, [id]);
+
+    const onSubmit = (data) => {
+        const newComment = {
+            name: data.name,
+            comment: data.comment,
+            rating: rating
+        };
+
+        const updatedComments = [...comments, newComment];
+        setComments(updatedComments);
+        localStorage.setItem(`comments-${id}`, JSON.stringify(updatedComments));
+        reset();
+        setRating(0);
+    };
+
+    const averageRating = comments.length > 0
+        ? comments.reduce((acc, cur) => acc + cur.rating, 0) / comments.length
+        : 0;
+
     return (
         <>
             <div className="outer-container">
-                <main className="small-inner-container">
+                <main className="small-inner-container cocktaildetails">
                     {loading && <p className="loading-message">Mixing... 🍹</p>}
                     {error && <p className="error-message">{error}</p>}
-                    {!loading && !error && !cocktail && (
-                        <p className="error-message">This drink went missing.</p>
-                    )}
+                    {!loading && !error && !cocktail && <p className="error-message">This drink went missing.</p>}
 
                     {cocktail && (
                         <>
@@ -71,14 +95,15 @@ function CocktailDetails() {
                                     />
                                     <div className="cocktail-stats">
                                         <h1 className="drink-title">{cocktail.strDrink}</h1>
-                                        <p className="rating">⭐️⭐️⭐️⭐️☆</p>
+                                        <div className="average-rating">
+                                            <StarRating value={averageRating} readOnly maxWidth={150}/>
+                                        </div>
                                         <div className="favourites-button">
-                                            <Button type="button">
-                                                Add to favourites
-                                            </Button>
+                                            <Button type="button">Add to favourites</Button>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className="ingredients-instructions-wrapper">
                                     <div className="ingredients-instructions-content">
                                         <div className="ingredients">
@@ -100,11 +125,12 @@ function CocktailDetails() {
                                     </div>
                                 </div>
                             </section>
+
                             <section>
                                 <div className="comments-wrapper">
                                     <div className="comments-form-container">
                                         <h3>Leave a comment</h3>
-                                        <form>
+                                        <form onSubmit={handleSubmit(onSubmit)}>
                                             <InputField
                                                 label="Name"
                                                 type="text"
@@ -112,15 +138,15 @@ function CocktailDetails() {
                                                 name="name"
                                                 register={register}
                                                 placeholder="Enter your name"
-                                                validation={{
-                                                    required: {
-                                                        value: true,
-                                                        message: "Name is required"
-                                                    }
-                                                }}
+                                                validation={{required: {value: true, message: "Name is required"}}}
                                             />
-                                            {errors.name &&
-                                                <p className="errorMessage">{errors.name.message}</p>}
+                                            {errors.name && <p className="errorMessage">{errors.name.message}</p>}
+
+                                            <div className="input-field">
+                                                <label htmlFor="rating">Rating</label>
+                                                <StarRating value={rating} onChange={setRating} maxWidth={100}/>
+                                            </div>
+
                                             <div className="input-field">
                                                 <label htmlFor="comment">Comment</label>
                                                 <textarea
@@ -135,22 +161,21 @@ function CocktailDetails() {
                                                 {errors.comment &&
                                                     <p className="errorMessage">{errors.comment.message}</p>}
                                             </div>
+
                                             <Button type="submit">Submit your comment</Button>
                                         </form>
                                     </div>
+
                                     <div className="reviews-container">
-                                        <div className="review-container">
-                                            <div className="review-header">
-                                                <h3>Naam</h3>
+                                        {comments.map((item, index) => (
+                                            <div className="review-container" key={index}>
+                                                <div className="review-header">
+                                                    <h4>{item.name}</h4>
+                                                    <StarRating value={item.rating} readOnly maxWidth={80}/>
+                                                </div>
+                                                <p className="review-text">{item.comment}</p>
                                             </div>
-                                            <p className="review-text">Comment here.</p>
-                                        </div>
-                                        <div className="review-container">
-                                            <div className="review-header">
-                                                <h3>Naam</h3>
-                                            </div>
-                                            <p className="review-text">Comment here.</p>
-                                        </div>
+                                        ))}
                                     </div>
                                 </div>
                             </section>
