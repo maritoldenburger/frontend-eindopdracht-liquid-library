@@ -9,7 +9,7 @@ export function AuthContextProvider({children}) {
     const [auth, setAuth] = useState({
         isAuth: false,
         user: null,
-        status: "pending"
+        status: "pending",
     });
     const navigate = useNavigate();
 
@@ -17,9 +17,9 @@ export function AuthContextProvider({children}) {
         const storedToken = localStorage.getItem("token");
 
         if (storedToken && checkTokenValidity(storedToken)) {
-            void login(storedToken);
+            login(storedToken);
         } else {
-            void logout()
+            logout();
         }
     }, []);
 
@@ -32,9 +32,11 @@ export function AuthContextProvider({children}) {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${jwtToken}`
-                    }
-                })
+                        Authorization: `Bearer ${jwtToken}`,
+                    },
+                }
+            );
+
             setAuth({
                 isAuth: true,
                 user: {
@@ -42,43 +44,37 @@ export function AuthContextProvider({children}) {
                     email: response.data.email,
                     id: response.data.id,
                 },
-                status: "done"
+                status: "done",
             });
-        } catch (error) {
-            console.log(error)
-        }
-        console.log("Gebruiker is ingelogd!");
-    };
-
-    useEffect(() => {
-        if (auth.isAuth && auth.status === "pending") {
             navigate("/profile");
+        } catch (error) {
+            console.error(error);
         }
-    }, [auth.isAuth, auth.status, navigate]);
+    };
 
     const logout = () => {
         localStorage.removeItem("token");
         setAuth({
             isAuth: false,
             user: null,
-            status: "done"
+            status: "done",
         });
         console.log("Gebruiker is uitgelogd!");
-    }
+    };
 
     const data = {
         isAuth: auth.isAuth,
         user: auth.user,
         token: localStorage.getItem("token"),
         login,
-        logout
+        logout,
     };
 
     return (
         <AuthContext.Provider value={data}>
             {auth.status === "done" ? children : <p>Loading...</p>}
         </AuthContext.Provider>
-    )
+    );
 }
 
 export default AuthContextProvider;

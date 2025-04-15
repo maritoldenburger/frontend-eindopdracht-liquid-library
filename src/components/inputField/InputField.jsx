@@ -1,8 +1,8 @@
 import React from "react";
 
-function InputField({label, type, id, name, register, placeholder, validation}) {
+function InputField({label, type, id, name, register, placeholder, validation, errors}) {
     return (
-        <div className={"input-field"}>
+        <div className="input-field">
             <label htmlFor={id}>
                 {label}
             </label>
@@ -13,6 +13,8 @@ function InputField({label, type, id, name, register, placeholder, validation}) 
                 className="input-field-input"
                 {...register(name, validation)}
             />
+            {errors && errors[name] && (
+                <p className="form-error-message">{errors[name].message}</p>)}
         </div>
     );
 }
