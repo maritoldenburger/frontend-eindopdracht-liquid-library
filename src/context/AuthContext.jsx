@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {checkTokenValidity} from "../helpers/checkTokenValidity";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext(null);
 
 export function AuthContextProvider({children}) {
     const [auth, setAuth] = useState({
@@ -28,7 +28,8 @@ export function AuthContextProvider({children}) {
 
         try {
             const response = await axios.get(
-                `https://frontend-educational-backend.herokuapp.com/api/user`, {
+                `https://frontend-educational-backend.herokuapp.com/api/user`,
+                {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${jwtToken}`
@@ -43,27 +44,32 @@ export function AuthContextProvider({children}) {
                 },
                 status: "done"
             });
-            navigate("/profile");
         } catch (error) {
             console.log(error)
         }
         console.log("Gebruiker is ingelogd!");
     };
 
+    useEffect(() => {
+        if (auth.isAuth && auth.status === "pending") {
+            navigate("/profile");
+        }
+    }, [auth.isAuth, auth.status, navigate]);
+
     const logout = () => {
-        localStorage.clear();
+        localStorage.removeItem("token");
         setAuth({
             isAuth: false,
             user: null,
             status: "done"
         });
         console.log("Gebruiker is uitgelogd!");
-        navigate("/");
     }
 
     const data = {
         isAuth: auth.isAuth,
         user: auth.user,
+        token: localStorage.getItem("token"),
         login,
         logout
     };

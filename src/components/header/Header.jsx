@@ -84,7 +84,7 @@ function Header() {
     return (
         <header className="outer-container header-container">
             <section className="inner-container">
-                <h1><NavLink to="/signup">Sign up</NavLink> and find your new favourite drink!</h1>
+                <h1><NavLink to="/register">Sign up</NavLink> and find your new favourite drink!</h1>
                 <div className="inner container searchbar-container">
                     <SearchBar
                         variant="searchbar-homepage"
