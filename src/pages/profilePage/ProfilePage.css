@@ -1,0 +1,88 @@
+.inner-container.account-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px 60px 40px 40px;
+}
+
+.inner-container.account-details h2 {
+    text-transform: initial;
+    color: var(--primary-colour);
+}
+
+.inner-container.account-details h3 {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.account-details-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+    padding: 0 60px;
+}
+
+.account-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-size: 14px;
+}
+
+.account-details-item {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.account-details-text {
+    font-weight: 500;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.account-details-container input {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    font-size: inherit;
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.account-details-container-button {
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.logout-button {
+    margin-top: 10px;
+    padding: 10px 40px;
+}
+
+.logout-button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.account-image {
+    width: 520px;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    margin-left: 50px;
+}

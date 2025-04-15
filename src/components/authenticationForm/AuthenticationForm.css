@@ -1,0 +1,80 @@
+.inner-container.authentication-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px 60px 40px 40px;
+}
+
+.inner-container.authentication-form h2 {
+    text-transform: initial;
+    color: var(--primary-colour);
+}
+
+.authentication-form-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: left;
+    padding: 0 60px;
+}
+
+.authentication-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    font-weight: 500;
+}
+
+.authentication-form-container input {
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    font-size: inherit;
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.authentication-form-container button {
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.form-bottom-text {
+    margin-top: 10px;
+}
+
+.form-bottom-text a,
+.form-bottom-text a:visited {
+    color: var(--primary-colour);
+    font-weight: 500;
+    position: relative;
+}
+
+.form-bottom-text a::after,
+.form-bottom-text a:visited::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: 0;
+    background-color: var(--primary-colour);
+    transition: width 0.3s ease-out;
+}
+
+.form-bottom-text a:hover::after {
+    width: 100%;
+}
+
+.authentication-image {
+    width: 520px;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    margin-left: 50px;
+}

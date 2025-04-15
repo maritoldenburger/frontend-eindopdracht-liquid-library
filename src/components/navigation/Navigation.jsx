@@ -1,13 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Navigation.css";
 import logo from "../../assets/images/liquid library white logo.png";
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart as faHeartRegular, faUser, faCircleQuestion} from "@fortawesome/free-regular-svg-icons"
 import {faMartiniGlass} from "@fortawesome/free-solid-svg-icons";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 
 function Navigation() {
+    const {isAuth} = useContext(AuthContext);
+
     return (
         <header className="outer-container">
             <nav className="inner-container">
@@ -40,8 +43,10 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                            to="/login">
-                            <FontAwesomeIcon icon={faUser} className="nav-icon"/>Sign In</NavLink>
+                            to={isAuth ? "/profile" : "/login"}>
+                            <FontAwesomeIcon icon={faUser} className="nav-icon"/>
+                            {isAuth ? "Profile" : "Sign In"}
+                        </NavLink>
                     </li>
                 </ul>
             </nav>

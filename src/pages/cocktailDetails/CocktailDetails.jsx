@@ -14,6 +14,7 @@ function CocktailDetails() {
     const [error, setError] = useState(null);
     const [comments, setComments] = useState([]);
     const [rating, setRating] = useState(0);
+    const [ratingError, setRatingError] = useState(null);
 
     const {id} = useParams();
     const {register, handleSubmit, reset, formState: {errors}} = useForm();
@@ -59,6 +60,13 @@ function CocktailDetails() {
     }, [id]);
 
     const onSubmit = (data) => {
+        if (rating === 0) {
+            setRatingError("Rating is required");
+            return;
+        } else {
+            setRatingError("");
+        }
+
         const newComment = {
             name: data.name,
             comment: data.comment,
@@ -140,11 +148,16 @@ function CocktailDetails() {
                                                 placeholder="Enter your name"
                                                 validation={{required: {value: true, message: "Name is required"}}}
                                             />
-                                            {errors.name && <p className="errorMessage">{errors.name.message}</p>}
+                                            {errors.name && <p className="form-error-message">{errors.name.message}</p>}
 
                                             <div className="input-field">
                                                 <label htmlFor="rating">Rating</label>
-                                                <StarRating value={rating} onChange={setRating} maxWidth={100}/>
+                                                <StarRating
+                                                    value={rating}
+                                                    onChange={setRating}
+                                                    maxWidth={100}
+                                                />
+                                                {ratingError && <p className="form-error-message">{ratingError}</p>}
                                             </div>
 
                                             <div className="input-field">
@@ -159,7 +172,7 @@ function CocktailDetails() {
                                                     })}
                                                 />
                                                 {errors.comment &&
-                                                    <p className="errorMessage">{errors.comment.message}</p>}
+                                                    <p className="form-error-message">{errors.comment.message}</p>}
                                             </div>
 
                                             <Button type="submit">Submit your comment</Button>
