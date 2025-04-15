@@ -66,6 +66,10 @@
     transition: width 0.3s ease-out;
 }
 
+.form-bottom-text a:hover::after {
+    width: 100%;
+}
+
 .authentication-image {
     width: 520px;
     height: 520px;

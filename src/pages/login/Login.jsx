@@ -32,10 +32,14 @@ function Login() {
             navigate("/profile");
 
         } catch (error) {
+            console.log(error.response)
             console.error("Sign in failed:", error);
-            setError(error.message);
-        } finally {
-            setLoading(false);
+
+            if (error.response?.data?.message) {
+                setError(error.response.data.message);
+            } else {
+                setError("Your username or password is incorrect. Please try again.");
+            }
         }
     };
 

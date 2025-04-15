@@ -18,7 +18,7 @@ function AuthenticationForm({isLogin = false, onSubmit, children, error, loading
                         {children}
                         {error && <p className="form-error-message">{error}</p>}
                         <button type="submit" disabled={loading}>
-                            {loading ? "Loading..." : isLogin ? "Sign in" : "Sign up"}
+                            {isLogin ? "Sign in" : "Sign up"}
                         </button>
                     </form>
                     <p className="form-bottom-text">
