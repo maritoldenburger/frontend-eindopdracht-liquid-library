@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./Favourites.css";
 import CocktailCard from "../../components/cocktailCard/CocktailCard.jsx";
 import Footer from "../../components/footer/Footer.jsx";
@@ -28,25 +28,25 @@ function Favourites() {
         <>
             <div className="outer-container favourites">
                 <main className="inner-container favourites">
-                    <section className="cocktail-content-section">
-                        <h1 className="page-title">Browse your favourites</h1>
-                        <div className="cocktail-grid">
+                    <section>
+                        <h1>Browse your favourites</h1>
+                        <div className="favourites-grid">
                             {visibleFavourites.length === 0 && (
-                                <p className="error-message">You don't have any favourites yet. </p>
+                                <p className="error-message favourites">You don't have any favourites yet. </p>
                             )}
                             {visibleFavourites.map((cocktail) => (
-                                <CocktailCard key={cocktail.idDrink} cocktail={cocktail} />
+                                <CocktailCard key={cocktail.idDrink} cocktail={cocktail}/>
                             ))}
                         </div>
                         <div className="load-more-favourites-button">
                             {canLoadMore && (
-                                <Button onClick={loadMoreFavourites}>Load more favourites</Button>
+                                <Button onClick={loadMoreFavourites}>Load more cocktails</Button>
                             )}
                         </div>
                     </section>
                 </main>
             </div>
-            <Footer />
+            <Footer/>
         </>
     );
 }
