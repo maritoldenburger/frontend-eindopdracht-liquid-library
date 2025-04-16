@@ -11,6 +11,7 @@ function Cocktails() {
     const [cocktails, setCocktails] = useState([]);
     const [visibleCocktails, setVisibleCocktails] = useState([]);
     const [matchingCocktails, setMatchingCocktails] = useState([]);
+    const [filteredCocktails, setFilteredCocktails] = useState([]);
     const [foundMatches, setFoundMatches] = useState("");
     const [query, setQuery] = useState("");
     const [offset, setOffset] = useState(0);
@@ -62,8 +63,10 @@ function Cocktails() {
     useEffect(() => {
         const fetchFiltered = async () => {
             if (!categoryFilter && !alcoholFilter && !ingredientFilter && !glassFilter) {
+                setFilteredCocktails([]);
                 setVisibleCocktails(cocktails.slice(0, 12));
                 setCanLoadMore(cocktails.length > 12);
+                setOffset(0);
                 return;
             }
 
@@ -80,9 +83,12 @@ function Cocktails() {
 
                 const response = await axios.get(url);
                 if (response.data.drinks) {
+                    setFilteredCocktails(response.data.drinks);
                     setVisibleCocktails(response.data.drinks.slice(0, 12));
                     setCanLoadMore(response.data.drinks.length > 12);
+                    setOffset(0);
                 } else {
+                    setFilteredCocktails([]);
                     setVisibleCocktails([]);
                     setCanLoadMore(false);
                 }
@@ -137,6 +143,7 @@ function Cocktails() {
         setQuery("");
         setFoundMatches("");
         setMatchingCocktails([]);
+        setFilteredCocktails([]);
         setVisibleCocktails(cocktails.slice(0, 12));
         setOffset(0);
         setSearchOffset(12);
@@ -144,16 +151,21 @@ function Cocktails() {
     };
 
     const loadMoreCocktails = () => {
-        if (foundMatches === "") {
-            const newOffset = offset + 12;
-            setOffset(newOffset);
-            setVisibleCocktails(cocktails.slice(0, newOffset + 12));
-            setCanLoadMore(cocktails.length > newOffset + 12);
-        } else {
+        if (foundMatches !== "") {
             const newSearchOffset = searchOffset + 12;
             setSearchOffset(newSearchOffset);
             setVisibleCocktails(matchingCocktails.slice(0, newSearchOffset));
             setCanLoadMore(matchingCocktails.length > newSearchOffset);
+        } else if (categoryFilter || alcoholFilter || ingredientFilter || glassFilter) {
+            const newOffset = offset + 12;
+            setOffset(newOffset);
+            setVisibleCocktails(filteredCocktails.slice(0, newOffset + 12));
+            setCanLoadMore(filteredCocktails.length > newOffset + 12);
+        } else {
+            const newOffset = offset + 12;
+            setOffset(newOffset);
+            setVisibleCocktails(cocktails.slice(0, newOffset + 12));
+            setCanLoadMore(cocktails.length > newOffset + 12);
         }
     };
 
