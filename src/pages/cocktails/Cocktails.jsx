@@ -196,7 +196,6 @@ function Cocktails() {
                                 <CocktailCard key={cocktail.idDrink} cocktail={cocktail}/>
                             ))}
                         </div>
-
                         <div className="load-more-cocktails-button">
                             {!loading && canLoadMore && (
                                 <Button onClick={loadMoreCocktails}>Load more cocktails</Button>

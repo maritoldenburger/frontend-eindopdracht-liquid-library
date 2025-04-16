@@ -28,8 +28,7 @@ function Login() {
                 }
             );
 
-            login(response.data.accessToken);
-            navigate("/profile");
+            await login(response.data.accessToken);
 
         } catch (error) {
             console.error("Sign in failed:", error);

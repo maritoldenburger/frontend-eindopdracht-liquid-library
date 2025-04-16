@@ -4,7 +4,8 @@
     --main-background: #FFFFFF;
     --main-text: #303030;
     --white-text: #FFFFFF;
-    --field-text: #949494;
+    --field-text-dark: #949494;
+    --field-text-light: #B9B9B9;
     --primary-colour: #FE6D46;
     --secondary-colour: #FABC2B;
     --gradient: linear-gradient(90deg, hsla(359, 100%, 65%, 1), hsla(50, 95%, 56%, 1));
