@@ -10,6 +10,7 @@ button {
     color: var(--white-text);
     width: fit-content;
     font-family: inherit;
+    outline:none;
 }
 
 button:active {
