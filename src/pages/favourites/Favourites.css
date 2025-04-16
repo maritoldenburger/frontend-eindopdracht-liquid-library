@@ -36,9 +36,3 @@
     justify-content: center;
     margin: 20px 0;
 }
-
-.error-message.favourites {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-}
