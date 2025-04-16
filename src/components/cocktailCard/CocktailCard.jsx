@@ -33,9 +33,10 @@ function CocktailCard({cocktail}) {
                 className={`favourite-icon ${isFavourite ? "is-favourite" : ""}`}
                 onClick={toggleFavourite}
             >
-                <FontAwesomeIcon
-                    icon={isFavourite ? faHeartSolid : faHeartRegular}
-                />
+                <FontAwesomeIcon icon={isFavourite ? faHeartSolid : faHeartRegular}/>
+                <span className="tooltip-text">
+        {isFavourite ? "Unfavourite" : "Favourite"}
+    </span>
             </div>
             <Link to={`/cocktail/${cocktail.idDrink}`} className="cocktail-card-link">
                 <img
