@@ -16,11 +16,11 @@ function CocktailDetails() {
     const [comments, setComments] = useState([]);
     const [rating, setRating] = useState(0);
     const [ratingError, setRatingError] = useState(null);
+    const [isFavourite, setIsFavourite] = useState(false);
+    const {isAuth, user} = useContext(AuthContext);
 
     const {id} = useParams();
     const {register, handleSubmit, reset, formState: {errors}} = useForm();
-
-    const {user} = useContext(AuthContext);
 
     useEffect(() => {
         const fetchCocktail = async () => {
@@ -42,6 +42,30 @@ function CocktailDetails() {
 
         fetchCocktail();
     }, [id]);
+
+    useEffect(() => {
+        const storedFavourites = JSON.parse(localStorage.getItem("favourites")) || [];
+        const exists = storedFavourites.some((fav) => fav.idDrink === id);
+        setIsFavourite(exists);
+    }, [id]);
+
+    const handleFavouriteToggle = () => {
+        const storedFavourites = JSON.parse(localStorage.getItem("favourites")) || [];
+        let updatedFavourites;
+
+        if (isFavourite) {
+            updatedFavourites = storedFavourites.filter((fav) => fav.idDrink !== id);
+        } else {
+            updatedFavourites = [...storedFavourites, {
+                idDrink: id,
+                strDrink: cocktail.strDrink,
+                strDrinkThumb: cocktail.strDrinkThumb
+            }];
+        }
+
+        localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
+        setIsFavourite(!isFavourite);
+    };
 
     const fetchIngredients = () => {
         const ingredients = [];
@@ -109,9 +133,13 @@ function CocktailDetails() {
                                         <div className="average-rating">
                                             <StarRating value={averageRating} readOnly maxWidth={150}/>
                                         </div>
-                                        <div className="favourites-button">
-                                            <Button type="button">Add to favourites</Button>
-                                        </div>
+                                        {isAuth && (
+                                            <div className="favourites-button">
+                                                <Button type="button" onClick={handleFavouriteToggle}>
+                                                    {isFavourite ? "Remove from favourites" : "Add to favourites"}
+                                                </Button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
 

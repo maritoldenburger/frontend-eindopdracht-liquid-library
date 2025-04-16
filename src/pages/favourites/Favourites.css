@@ -1,0 +1,17 @@
+.inner-container.favourites {
+    padding: 40px 20px;
+}
+
+.cocktail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 0;
+}
+
+.load-more-favourites-button {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 20px 0;
+}
+

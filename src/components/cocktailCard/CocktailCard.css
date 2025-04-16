@@ -1,12 +1,33 @@
 .cocktail-card {
     border-radius: 20px;
     width: 250px;
+    height: 300px;
     text-align: center;
     transition: transform 0.3s ease;
+    position: relative;
+    margin-bottom: 20px;
 }
 
 .cocktail-card:hover {
     transform: scale(0.95);
+}
+
+.favourite-icon {
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--white-text);
+    transition: color 0.3s ease;
+}
+
+.favourite-icon:hover {
+    color: var(--primary-colour);
+}
+
+.favourite-icon.is-favourite {
+    color: var(--primary-colour);
 }
 
 .cocktail-card-image {
@@ -20,4 +41,27 @@
 .cocktail-card-title {
     color: var(--primary-colour);
     text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: white;
+    color: var(--main-text);
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 40px;
+    right: -25px;
+    z-index: 1;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.favourite-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
