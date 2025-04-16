@@ -1,12 +1,32 @@
 .cocktail-card {
     border-radius: 20px;
     width: 250px;
+    height: 300px;
     text-align: center;
     transition: transform 0.3s ease;
+    position: relative;
 }
 
 .cocktail-card:hover {
     transform: scale(0.95);
+}
+
+.favourite-icon {
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.favourite-icon:hover {
+    color: var(--primary-colour);
+}
+
+.favourite-icon.is-favourite {
+    color: var(--primary-colour);
 }
 
 .cocktail-card-image {
