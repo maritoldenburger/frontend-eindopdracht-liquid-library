@@ -4,6 +4,8 @@ import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../searchBar/SearchBar.jsx";
 import {getSearchSuggestions} from "../../helpers/getSearchSuggestions.js";
+import {useContext} from "react";
+import {AuthContext} from "../../context/AuthContext";
 
 function Header() {
     const [cocktails, setCocktails] = useState([]);
@@ -13,6 +15,7 @@ function Header() {
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
+    const {isAuth} = useContext(AuthContext);
 
     const fetchCocktails = async (query) => {
         setLoading(true);
@@ -84,7 +87,11 @@ function Header() {
     return (
         <header className="outer-container header-container">
             <section className="inner-container">
-                <h1><NavLink to="/register">Sign up</NavLink> and find your new favourite drink!</h1>
+                <h1>
+                    {!isAuth ? (
+                        <><NavLink to="/register">Sign up</NavLink> and find your new favourite drink!</>
+                    ) : (<>Find your new favourite drink!</>)}
+                </h1>
                 <div className="inner container searchbar-container">
                     <SearchBar
                         variant="searchbar-homepage"
