@@ -26,7 +26,7 @@
 }
 
 .searchbar::placeholder {
-    color: var(--field-text);
+    color: var(--field-text-dark);
 }
 
 .searchbar-default {
