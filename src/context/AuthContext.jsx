@@ -72,7 +72,7 @@ export function AuthContextProvider({children}) {
 
     return (
         <AuthContext.Provider value={data}>
-            {auth.status === "done" ? children : <p>Loading...</p>}
+            {auth.status === "done" ? children : <p>Mixing... 🍹</p>}
         </AuthContext.Provider>
     );
 }

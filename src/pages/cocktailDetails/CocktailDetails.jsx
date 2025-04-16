@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import "./CocktailDetails.css";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/button/Button.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import InputField from "../../components/inputField/InputField.jsx";
 import {useForm} from "react-hook-form";
 import StarRating from "../../components/starRating/StarRating.jsx";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 function CocktailDetails() {
     const [cocktail, setCocktail] = useState(null);
@@ -18,6 +19,8 @@ function CocktailDetails() {
 
     const {id} = useParams();
     const {register, handleSubmit, reset, formState: {errors}} = useForm();
+
+    const {user} = useContext(AuthContext);
 
     useEffect(() => {
         const fetchCocktail = async () => {
@@ -138,45 +141,50 @@ function CocktailDetails() {
                                 <div className="comments-wrapper">
                                     <div className="comments-form-container">
                                         <h3>Leave a comment</h3>
-                                        <form onSubmit={handleSubmit(onSubmit)}>
-                                            <InputField
-                                                label="Name"
-                                                type="text"
-                                                id="name-field"
-                                                name="name"
-                                                register={register}
-                                                placeholder="Enter your name"
-                                                validation={{required: {value: true, message: "Name is required"}}}
-                                            />
-                                            {errors.name && <p className="form-error-message">{errors.name.message}</p>}
-
-                                            <div className="input-field">
-                                                <label htmlFor="rating">Rating</label>
-                                                <StarRating
-                                                    value={rating}
-                                                    onChange={setRating}
-                                                    maxWidth={100}
+                                        {user ? (
+                                            <form onSubmit={handleSubmit(onSubmit)}>
+                                                <InputField
+                                                    label="Name"
+                                                    type="text"
+                                                    id="name-field"
+                                                    name="name"
+                                                    register={register}
+                                                    placeholder="Enter your name"
+                                                    validation={{required: {value: true, message: "Name is required"}}}
                                                 />
-                                                {ratingError && <p className="form-error-message">{ratingError}</p>}
-                                            </div>
+                                                {errors.name &&
+                                                    <p className="form-error-message">{errors.name.message}</p>}
 
-                                            <div className="input-field">
-                                                <label htmlFor="comment">Comment</label>
-                                                <textarea
-                                                    id="comment"
-                                                    rows="5"
-                                                    placeholder="Type your comment here"
-                                                    className="input-field-input"
-                                                    {...register("comment", {
-                                                        required: "Comment is required"
-                                                    })}
-                                                />
-                                                {errors.comment &&
-                                                    <p className="form-error-message">{errors.comment.message}</p>}
-                                            </div>
+                                                <div className="input-field">
+                                                    <label htmlFor="rating">Rating</label>
+                                                    <StarRating
+                                                        value={rating}
+                                                        onChange={setRating}
+                                                        maxWidth={100}
+                                                    />
+                                                    {ratingError && <p className="form-error-message">{ratingError}</p>}
+                                                </div>
 
-                                            <Button type="submit">Submit your comment</Button>
-                                        </form>
+                                                <div className="input-field">
+                                                    <label htmlFor="comment">Comment</label>
+                                                    <textarea
+                                                        id="comment"
+                                                        rows="5"
+                                                        placeholder="Type your comment here"
+                                                        className="input-field-input"
+                                                        {...register("comment", {
+                                                            required: "Comment is required"
+                                                        })}
+                                                    />
+                                                    {errors.comment &&
+                                                        <p className="form-error-message">{errors.comment.message}</p>}
+                                                </div>
+
+                                                <Button type="submit">Submit your comment</Button>
+                                            </form>
+                                        ) : (
+                                            <p className="form-info-message">Please sign in to leave a comment.</p>
+                                        )}
                                     </div>
 
                                     <div className="reviews-container">

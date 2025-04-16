@@ -68,7 +68,10 @@
 
 .logout-button {
     margin-top: 10px;
-    padding: 10px 40px;
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 .logout-button-wrapper {
