@@ -36,6 +36,15 @@
     padding: 5px 10px;
 }
 
+.authentication-form-container input:focus {
+    outline: none;
+    border: 1px solid transparent;
+    background-image: linear-gradient(white, white),
+    var(--gradient);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
 .authentication-form-container button {
     width: 100%;
     padding: 5px 20px;

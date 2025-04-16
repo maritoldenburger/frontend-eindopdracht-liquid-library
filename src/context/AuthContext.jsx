@@ -51,12 +51,6 @@ export function AuthContextProvider({children}) {
         }
     };
 
-    useEffect(() => {
-        if (auth.isAuth && auth.status === "pending") {
-            navigate("/profile");
-        }
-    }, [auth.isAuth, auth.status, navigate]);
-
     const logout = () => {
         localStorage.removeItem("token");
         setAuth({

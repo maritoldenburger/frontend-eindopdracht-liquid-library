@@ -29,6 +29,7 @@ function Login() {
             );
 
             await login(response.data.accessToken);
+            navigate("/profile");
 
         } catch (error) {
             console.error("Sign in failed:", error);

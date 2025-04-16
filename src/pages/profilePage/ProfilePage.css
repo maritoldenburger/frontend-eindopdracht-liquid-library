@@ -59,10 +59,18 @@
     padding: 5px 10px;
 }
 
+.account-details-container input:focus {
+    outline: none;
+    border: 1px solid transparent;
+    background-image: linear-gradient(white, white),
+    var(--gradient);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
 .account-details-container-button {
     width: 100%;
     padding: 5px 20px;
-    border-radius: 10px;
     font-size: 12px;
 }
 
