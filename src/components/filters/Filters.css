@@ -1,3 +1,5 @@
+/* ------------------------------- Filters -------------------------------- */
+
 .filters-wrapper {
     display: flex;
     flex-direction: column;
@@ -28,4 +30,63 @@
     height: 16px;
     accent-color: var(--primary-colour);
     cursor: pointer;
+}
+
+/* ------------------------------- Media Queries -------------------------------- */
+
+@media screen and (max-width: 992px) {
+    .filters-wrapper {
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0;
+        gap: 2rem;
+    }
+
+    .filter-content.closed {
+        display: none;
+    }
+
+    .filter-content.open {
+        display: block;
+    }
+
+    .filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .filter-header h4 {
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    .chevron-icon {
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .chevron-icon.rotate {
+        transform: rotate(180deg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filters-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+
+    .filter-option {
+        gap: 0.4rem;
+    }
+
+    .filter-option input {
+        width: 1rem;
+        height: 1rem;
+    }
 }

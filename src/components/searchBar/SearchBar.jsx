@@ -24,7 +24,7 @@ function SearchBar({placeholder, value, onChange, onSubmit, variant, handleReset
                             className="searchbar-reset-button"
                             onClick={handleReset}
                         >
-                            <FontAwesomeIcon icon={faCircleXmark} />
+                            <FontAwesomeIcon icon={faCircleXmark}/>
                         </button>
                     )}
                 </form>
