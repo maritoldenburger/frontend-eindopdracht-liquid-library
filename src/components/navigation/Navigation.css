@@ -1,3 +1,5 @@
+/* ------------------------------- Navigation -------------------------------- */
+
 header {
     background: var(--gradient);
 }
@@ -12,13 +14,13 @@ nav {
     text-transform: uppercase;
 }
 
-ul {
+nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
     gap: 60px;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 nav ul a,
@@ -55,3 +57,50 @@ nav ul a:visited {
     text-decoration-thickness: 2px;
 }
 
+.menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem;
+    z-index: 1;
+}
+
+.menu-icon {
+    color: var(--white-text);
+    font-size: 1.5rem;
+}
+
+/* ------------------------------- Media Queries -------------------------------- */
+
+@media screen and (max-width: 992px) {
+    .nav-links {
+        gap: 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background: var(--gradient);
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 0;
+        display: none;
+        z-index: 5;
+        margin-right: 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+}

@@ -1,25 +1,33 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import "./Navigation.css";
 import logo from "../../assets/images/liquid library white logo.png";
 import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHeart as faHeartRegular, faUser, faCircleQuestion} from "@fortawesome/free-regular-svg-icons"
-import {faMartiniGlass} from "@fortawesome/free-solid-svg-icons";
+import {faHeart as faHeartRegular, faUser, faCircleQuestion} from "@fortawesome/free-regular-svg-icons";
+import {faMartiniGlass, faBars, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {AuthContext} from "../../context/AuthContext.jsx";
-
 
 function Navigation() {
     const {isAuth} = useContext(AuthContext);
+    const [openMenu, toggleOpenMenu] = useState(false);
+
+    const toggleMenu = () => {
+        toggleOpenMenu(!openMenu);
+    };
 
     return (
         <header className="outer-container">
             <nav className="inner-container">
                 <NavLink to="/"><img src={logo} className="logo" alt="Logo"/></NavLink>
-                <ul>
+                <button className="menu" onClick={toggleMenu}>
+                    <FontAwesomeIcon icon={openMenu ? faXmark : faBars} className="menu-icon"/>
+                </button>
+                <ul className={`nav-links ${openMenu ? "open" : ""}`}>
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                            to="/surprise">
+                            to="/surprise"
+                        >
                             <FontAwesomeIcon icon={faCircleQuestion} className="nav-icon"/>
                             Surprise me!
                         </NavLink>
@@ -27,7 +35,8 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                            to="/cocktails">
+                            to="/cocktails"
+                        >
                             <FontAwesomeIcon icon={faMartiniGlass} className="nav-icon"/>
                             Cocktails
                         </NavLink>
@@ -35,7 +44,8 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                            to="/favourites">
+                            to="/favourites"
+                        >
                             <FontAwesomeIcon icon={faHeartRegular} className="nav-icon"/>
                             Favourites
                         </NavLink>
@@ -43,7 +53,8 @@ function Navigation() {
                     <li>
                         <NavLink
                             className={({isActive}) => isActive ? "active-menu-link" : "default-menu-link"}
-                            to={isAuth ? "/profile" : "/login"}>
+                            to={isAuth ? "/profile" : "/login"}
+                        >
                             <FontAwesomeIcon icon={faUser} className="nav-icon"/>
                             {isAuth ? "Profile" : "Sign In"}
                         </NavLink>
