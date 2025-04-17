@@ -1,3 +1,5 @@
+/* ------------------------------- Header -------------------------------- */
+
 .header-container {
     background: var(--gradient);
     height: 280px;
@@ -48,7 +50,7 @@
 
 .suggestion-item {
     display: flex;
-    padding: 8px ;
+    padding: 8px;
     border-bottom: 1px solid #F0F0F0;
 }
 
@@ -59,4 +61,41 @@
 
 .suggestion-item:last-child {
     border-bottom: none;
+}
+
+/* ------------------------------- Media Queries -------------------------------- */
+
+@media screen and (max-width: 992px) {
+    .header-container {
+        height: 240px;
+        padding: 0 1rem;
+    }
+
+    .header-container h1 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .suggestions-list {
+        width: 80%;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .header-container h1 {
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .suggestions-list {
+        width: 90%;
+        font-size: 0.85rem;
+    }
 }
