@@ -1,4 +1,3 @@
-import "./app.css";
 import {Routes, Route, Navigate} from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import NotFound from "./pages/notFound/NotFound.jsx";

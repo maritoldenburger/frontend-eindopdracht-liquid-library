@@ -11,7 +11,7 @@
     --gradient: linear-gradient(90deg, hsla(359, 100%, 65%, 1), hsla(50, 95%, 56%, 1));
 }
 
-/* ------------------------------- 1. Global Styles -------------------------------- */
+/* ------------------------------- Global Styles -------------------------------- */
 
 * {
     box-sizing: border-box;
@@ -32,7 +32,7 @@ a, a:visited {
     color: inherit;
 }
 
-/* ------------------------------- 2. Typography ----------------------------------- */
+/* ------------------------------- Typography ----------------------------------- */
 
 h1, h2 {
     padding: 12px 0;
@@ -57,18 +57,13 @@ h4 {
     font-size: 1.1rem;
 }
 
-/* ------------------------------- 3. Layout --------------------------------------- */
-
-
-
-/* --------------- 3.1 Reusables ----------------------- */
+/* --------------- Reusables ----------------------- */
 
 .outer-container {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 2px dotted dodgerblue;
 }
 
 .inner-container {
@@ -78,17 +73,15 @@ h4 {
     align-items: center;
     padding: 20px;
     text-align: center;
-    border: 2px dotted blueviolet;
 }
 
 .small-inner-container {
     flex-basis: 1000px;
     flex-shrink: 1;
     flex-grow: 0;
-    border: 2px dotted limegreen;
 }
 
-/* --------------- 3.2 Other --------------------------- */
+/* --------------- Other --------------------------- */
 
 .error-message {
     display: flex;
@@ -110,16 +103,10 @@ h4 {
     color: var(--primary-colour);
 }
 
-/* ------------------------------- 4. Areas ---------------------------------------- */
-
-/* --------------- 4.1 Header ------------------------- */
-
-/* --------------- 4.2 Introduction ------------------- */
-
-/* ------------------------------- 5. Media Queries -------------------------------- */
+/* ------------------------------- Media Queries -------------------------------- */
 
 @media screen and (max-width: 768px) {
-    h2 {
+    h1, h2 {
         font-size: 1.5rem;
     }
 }
