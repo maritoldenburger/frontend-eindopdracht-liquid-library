@@ -1,5 +1,4 @@
 import React, {createContext, useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {checkTokenValidity} from "../helpers/checkTokenValidity";
 
@@ -11,7 +10,6 @@ export function AuthContextProvider({children}) {
         user: null,
         status: "pending",
     });
-    const navigate = useNavigate();
 
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
@@ -58,7 +56,6 @@ export function AuthContextProvider({children}) {
             user: null,
             status: "done",
         });
-        console.log("Gebruiker is uitgelogd!");
     };
 
     const data = {

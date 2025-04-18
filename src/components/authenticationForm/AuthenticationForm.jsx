@@ -28,7 +28,9 @@ function AuthenticationForm({isLogin = false, onSubmit, children, error, loading
                         }
                     </p>
                 </div>
-                <img src={cocktailImage} alt="A cocktail" className="authentication-image"/>
+                <span className="authentication-image-wrapper">
+                    <img src={cocktailImage} alt="A cocktail" className="authentication-image"/>
+                </span>
             </section>
         </main>
     );

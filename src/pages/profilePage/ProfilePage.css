@@ -104,6 +104,9 @@
     border-radius: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     margin-left: 50px;
+}
+
+.account-image-wrapper {
     flex-shrink: 2;
     flex-grow: 0;
 }
@@ -116,9 +119,11 @@
     }
 
     .account-image {
-        width: 100%;
-        height: auto;
+        width: 25rem;
+        height: 25rem;
         max-width: 25rem;
+        margin: 0 auto 2rem auto;
+        object-fit: cover;
     }
 }
 
@@ -130,10 +135,11 @@
     }
 
     .account-image {
-        width: 100%;
+        width: 20rem;
         height: 20rem;
         max-width: 20rem;
         margin: 0 auto 2rem auto;
+        object-fit: cover;
     }
 
     .account-details-container {

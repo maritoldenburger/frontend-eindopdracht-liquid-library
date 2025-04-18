@@ -86,7 +86,9 @@ function ProfilePage() {
         <>
             <main className="outer-container">
                 <section className="inner-container account-details">
-                    <img src={cocktailImage} alt="A cocktail" className="account-image"/>
+                    <span className="account-image-wrapper">
+                        <img src={cocktailImage} alt="A cocktail" className="account-image"/>
+                    </span>
                     <div className="account-details-container">
                         <h2>Hi {user?.username}!</h2>
                         <h3>These are your account details.</h3>

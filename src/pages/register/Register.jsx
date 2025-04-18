@@ -38,8 +38,8 @@ function Register() {
                         password: data.password,
                     }
                 );
-                login(loginResponse.data.accessToken);
-                navigate("/profile");
+                await login(loginResponse.data.accessToken);
+                navigate("/");
             }
         } catch (error) {
             console.error("Sign up failed:", error);
