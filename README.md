@@ -45,9 +45,11 @@ Andere gebruikte dependencies zijn:
     1. Open **WebStorm**.
     2. Ga naar **File** > **New** > **Project from Version Control...**
     3. Selecteer **Git** als versiebeheer en plak de volgende SSH-link achter **URL**:
-    ```
+    
+   ```
     git@github.com:maritoldenburger/frontend-eindopdracht-liquid-library.git
     ```
+
     4. Wijzig eventueel de **directory**
     5. Klik op **clone**
 
@@ -62,11 +64,13 @@ Andere gebruikte dependencies zijn:
 
 3. **Start de applicatie**
     1. Als dat is gelukt, kun je de applicatie starten door het volgende commando in de terminal te runnen:
+   
    ```shell
    npm run dev
    ```
    Je kunt ook op de groene `Run 'npm dev'` knop klikken of `Shift+F10` gebruiken.
-    2. Open vervolgens http://localhost:5173 om de pagina in de browser te bekijken.
+
+   2. Open vervolgens http://localhost:5173 om de pagina in de browser te bekijken.
 
 ## Registratie en Inloggen
 
