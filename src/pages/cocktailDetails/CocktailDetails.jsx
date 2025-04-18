@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from "react";
 import "./CocktailDetails.css";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/button/Button.jsx";
 import Footer from "../../components/footer/Footer.jsx";

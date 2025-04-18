@@ -26,8 +26,7 @@ function App() {
                 <Route path="/favourites" element={isAuth ? <Favourites/> : <Navigate to="/login"/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/profile" element={isAuth ? <ProfilePage/> : <Navigate to="/login"/>}
-                />
+                <Route path="/profile" element={<ProfilePage/>}/>
                 <Route path="*" element={<NotFound/>}/>
             </Routes>
         </>
